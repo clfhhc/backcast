@@ -30,10 +30,13 @@
 
   <script>
     backboneReady(() => {
-      new AppView();
-      //Need to verify if this is correct, passing in the exampleVideoData.js array
-      //console.log('reached ready');
-      //var a = new Videos(exampleVideoData);
+      let data = new Videos(exampleVideoData);
+      let appView = new AppView({collection: data});
+      //appView.render();
+      /*
+        var movies = new Movies(movieData);
+        new AppView({el: $('#main'), collection: movies}).render();
+      */
     });
   </script>
 
