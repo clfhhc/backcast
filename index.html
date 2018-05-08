@@ -29,14 +29,13 @@
   <script src="src/views/videoPlayer.js"></script>
 
   <script>
-    backboneReady(() => {
-      let data = new Videos(exampleVideoData);
+    backboneReady(() => {      
+      
+      let data = new Videos();
+      //not triggering events at this point, just default collection for now
+      data.add(exampleVideoData);
       let appView = new AppView({collection: data});
-      //appView.render();
-      /*
-        var movies = new Movies(movieData);
-        new AppView({el: $('#main'), collection: movies}).render();
-      */
+
     });
   </script>
 

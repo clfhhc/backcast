@@ -1,6 +1,7 @@
 var VideoListView = Backbone.View.extend({
   
   initialize: function() {
+    console.log(this.collection);
     this.collection.on('sync', this.render, this);
   },
   
