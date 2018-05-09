@@ -1,7 +1,7 @@
 var SearchView = Backbone.View.extend({
 
   events: {
-    'click .btn': 'handleSearch'
+    'click button': 'handleSearch'
   },
 
   render: function() {
@@ -10,7 +10,6 @@ var SearchView = Backbone.View.extend({
   },
   
   handleSearch: function() {
-    //console.log(2);
     let query = $('.form-control').val();
     this.trigger('search', query);
   },
