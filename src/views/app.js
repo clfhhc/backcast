@@ -8,20 +8,26 @@ var AppView = Backbone.View.extend({
     this.on('select', function(model) {
       this.videoPlayerView.render(model);
     }, this);
+    this.listenTo(this.searchView, 'search', function(query) {
+      // console.log(1);
+      // let query = $('.form-control').val();
+      // console.log('In App View', query);
+      this.videos.search(query);
+    }, this);
   },
 
 
   render: function() {
     this.$el.html(this.template());
     //new variable for each of the views
-    let searchView = new SearchView();
-    this.$el.find('.search').append(searchView.render());
+    this.searchView = new SearchView();
+    this.$el.find('.search').append(this.searchView.render());
     
-    let videoPlayerView = new VideoPlayerView({collection: this.videos});
-    this.$el.find('.player').append(videoPlayerView.render());
+    this.videoPlayerView = new VideoPlayerView({collection: this.videos});
+    this.$el.find('.player').append(this.videoPlayerView.render());
     
-    let videoListView = new VideoListView({collection: this.videos});
-    this.$el.find('.list').append(videoListView.render());
+    this.videoListView = new VideoListView({collection: this.videos});
+    this.$el.find('.list').append(this.videoListView.render());
     return this.$el;
   },
 
